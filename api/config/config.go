@@ -3,7 +3,6 @@ package config
 import (
 	"log"
 	"os"
-
 	"gopkg.in/ini.v1"
 )
 
@@ -18,5 +17,8 @@ func init() {
 	if err != nil {
 		log.Printf("Failed to read file: %v", err)
 		os.Exit(1)
+	}
+	Config = ConfigList{
+		LogFile: cfg.Section("thoughts-app").Key("log_file").String(),
 	}
 }
