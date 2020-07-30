@@ -25,8 +25,9 @@ type Thought struct {
 	CreatedAt int64 `db:"created_at"`
 	UserId int64 `db:"user_id"`
 	ParentId uint `db:"parent_id"`
-	IsTheme bool `db:"is_theme,default:false"`
+	Title string `db:"title, size:128`
 	Content string `db:"content, size:2048`
+	IsTheme bool `db:"is_theme,default:false"`
 	LikesCount int `db:"likes_count, default:0"` 
 }
 
@@ -71,10 +72,19 @@ func initDb() *gorp.DbMap {
 	return dbmap
 }
 
+func openDb() *gorp.DbMap {
+	db, err := sql.Open("postgres", "host=db user=app_user dbname=app_db password=postgres_password sslmode=disable port=5432")
+	if err != nil {
+		log.Printf("Failed to open db: %s",err.Error())
+	}
+	dbmap := &gorp.DbMap{Db: db, Dialect: gorp.PostgresDialect{}}
+	return dbmap
+}
+
 func main() {
 	utils.LoggingSettings(config.Config.LogFile)
 	dbmap := initDb()
-	defer dbmap.Db.Close()
+	dbmap.Db.Close()
 	router := gin.Default()
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
