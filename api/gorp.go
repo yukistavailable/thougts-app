@@ -12,7 +12,7 @@ import (
 )
 
 type User struct {
-	CreatedAt time.Time `db:"created_at"`
+	CreatedAt int64 `db:"created_at"`
 	Id int64 `db:"user_id, primarykey, autoincrement"`
 	UserName string `db:"user_name,size:128"`
 	Profile string `db:"profile,size:512"`
@@ -22,7 +22,7 @@ type User struct {
 
 type Thought struct {
 	Id int64 `db:"thought_id, primarykey, autoincrement"`
-	CreatedAt time.Time `db:"created_at"`
+	CreatedAt int64 `db:"created_at"`
 	UserId int64 `db:"user_id"`
 	ParentId uint `db:"parent_id"`
 	IsTheme bool `db:"is_theme,default:false"`
@@ -32,24 +32,25 @@ type Thought struct {
 
 type UsersThoughtIT struct {
 	Id int64 `db:"id, primarykey, autoincrement"`
-	CreatedAt time.Time `db:"created_at"`
+	CreatedAt int64 `db:"created_at"`
 	UserId int64 `db:"user_id"`
 	ThoughtId int64 `db:"thought_id"`
 }
 
 type UsersLikeIT struct {
 	Id int64 `db:"id, primarykey, autoincrement"`
-	CreatedAt time.Time `db:"created_at"`
+	CreatedAt int64 `db:"created_at"`
 	UserId int64 `db:"user_id"`
 	ThoughtId int64 `db:"thought_id"`
 }
 
 type FollowIT struct {
 	Id int64 `db:"id, primarykey, autoincrement"`
-	CreatedAt time.Time `db:"created_at"`
+	CreatedAt int64 `db:"created_at"`
 	FollowUserId int64 `db:"follow_user_id"`
 	FollowedUserId int64 `db:"followed_user_id"`
 }
+
 
 
 func initDb() *gorp.DbMap {
