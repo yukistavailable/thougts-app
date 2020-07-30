@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"thoughts-app/api/config"
+	"thoughts-app/api/utils"
 )
 
 type User struct {
@@ -17,8 +20,8 @@ type UserProfile struct {
 	Sentences string
 	User User `gorm:"foreignkey:UserID"`
 	UserID uint
-	Follows []int
-	Followers []int
+	Follows []uint
+	Followers []uint
 }
 
 type Thought struct {
@@ -27,17 +30,22 @@ type Thought struct {
 	ParentThoughtID uint `gorm:"default:0"`
 	IsTheme bool `gorm:"default:false"`
 	Content string
-	LikeUsers []int
+	LikeUsers []uint
 }
 
-
-
-func main() {
+func dbInit() {
 	db, err := gorm.Open("postgres", "host=db user=app_user dbname=app_db password=postgres_password sslmode=disable port=5432")
 	defer db.Close()
 	if err != nil {
-		fmt.Println(err.Error())
+		log.Println(err.Error())
 	}
+	db.AutoMigrate(&User{}, &UserProfile{}, &Thought{})
+}
+
+
+func main() {
+	utils.LoggingSettings(config.Config.LogFile)
+	dbInit()
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*.html")
 	router.GET("/", func(ctx *gin.Context) {
