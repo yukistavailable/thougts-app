@@ -12,7 +12,7 @@ func signIn(userName string) {
 	defer dbmap.Db.Close()
 	var user User{CreatedAt: time.Now().UnixNano(), UserName: userName, FollowsCount: 0, FollowersCount:0}
 	err = dbmap.Insert(&user)
-	checkError(err, "cannnot insert themeThought: %s")
+	checkError(err, "cannnot insert user: %s")
 }
 
 func craeteThemeThought(userId int64, title string, content string) {
@@ -68,6 +68,13 @@ func detailUser(userId int64) User {
 	err := dbmap.SelectOne(&user, "select * from users where user_id = $1", userId)
 	checkError(err, "cannot selectOne user: %s")
 	return user
+}
+
+func allUsers() []User {
+	dbmap := openDb()
+	defer dbmap.Db.Close()
+	var users []User
+	err := dbmap.Select(&users, "select * from users order by created_at")
 }
 
 func detailThought(thoughtId int64) Thought {

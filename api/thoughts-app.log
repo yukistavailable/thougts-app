@@ -1,0 +1,7 @@
+2020/07/31 05:47:04 gorp.go:85: sample
+2020/07/31 05:47:28 gorp.go:85: sample
+2020/07/31 05:47:42 gorp.go:85: sample
+2020/08/01 06:25:25 gorp.go:79: Run Server
+2020/08/01 06:29:14 api_func.go:64: cannnot insert themeThought: no table found for type: User
+2020/08/01 06:29:24 api_func.go:64: cannnot insert themeThought: no table found for type: User
+2020/08/01 06:29:53 api_func.go:64: cannnot insert themeThought: no table found for type: User
