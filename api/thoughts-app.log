@@ -5,3 +5,24 @@
 2020/08/01 06:29:14 api_func.go:64: cannnot insert themeThought: no table found for type: User
 2020/08/01 06:29:24 api_func.go:64: cannnot insert themeThought: no table found for type: User
 2020/08/01 06:29:53 api_func.go:64: cannnot insert themeThought: no table found for type: User
+2020/08/01 06:38:26 newgorp.go:79: Run Server
+2020/08/01 06:39:02 api_func.go:64: cannnot insert themeThought: no table found for type: User
+2020/08/01 06:40:32 newgorp.go:79: Run Server
+2020/08/01 06:41:26 newgorp.go:79: Run Server
+2020/08/01 06:44:14 newgorp.go:79: Run Server
+2020/08/01 06:44:26 api_func.go:64: cannnot insert user: no table found for type: User
+2020/08/01 07:06:12 newgorp.go:79: Run Server
+2020/08/01 07:07:02 newgorp.go:79: Run Server
+2020/08/01 07:07:44 api_func.go:64: cannnot insert user: no table found for type: User
+2020/08/01 07:28:59 newgorp.go:79: Run Server
+2020/08/01 07:51:35 newgorp.go:80: Run Server
+2020/08/01 08:09:02 newgorp.go:41: Run Server
+2020/08/01 08:11:18 newgorp.go:41: Run Server
+2020/08/01 08:17:24 newgorp.go:41: Run Server
+2020/08/01 08:18:40 api_new_func.go:64: cannot bind json: invalid character '}' looking for beginning of object key string
+2020/08/01 08:24:15 newgorp.go:41: Run Server
+2020/08/01 08:24:55 newgorp.go:41: Run Server
+2020/08/01 08:26:09 newgorp.go:41: Run Server
+2020/08/01 08:27:12 newgorp.go:41: Run Server
+2020/08/01 08:28:59 newgorp.go:41: Run Server
+2020/08/01 09:55:48 newgorp.go:49: Run Server
