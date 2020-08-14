@@ -73,12 +73,13 @@ func SignIn(userName string, dbmap *gorp.DbMap) int64 {
 	return user.Id
 }
 
-func CraeteThemeThought(userId int64, title string, content string, dbmap *gorp.DbMap) {
+func CreateThemeThought(userId int64, title string, content string, dbmap *gorp.DbMap) int64 {
 	// dbmap := openDb()
 	// defer dbmap.Db.Close()
 	thought := Thought{CreatedAt:time.Now().UnixNano(), UserId: userId, Title: title, Content: content, IsTheme:true, LikesCount:0}
 	err := dbmap.Insert(&thought)
 	CheckError(err, "cannnot insert themeThought: %s")
+	return thought.Id
 }
 
 func CreateThought(userId int64, parentId int64, title string, content string, dbmap *gorp.DbMap) int64 {
